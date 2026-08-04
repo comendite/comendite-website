@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comendite | كومنديت للتصميم الداخلي</title>
+<meta name="description" content="Comendite - استوديو تصميم داخلي ومعماري. نحوّل مساحاتك إلى تجارب بصرية متكاملة من التصميم إلى التنفيذ. | Comendite is an interior design and architecture studio turning spaces into complete visual experiences.">
+<meta name="keywords" content="تصميم داخلي, ديكور, استوديو تصميم, interior design, architecture, Comendite">
+<meta property="og:title" content="Comendite | كومنديت للتصميم الداخلي">
+<meta property="og:description" content="استوديو تصميم داخلي ومعماري يحوّل مساحاتك إلى تجارب بصرية متكاملة.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --ivory:#F7F2EA;
+    --ivory-alt:#EFE6D6;
+    --charcoal:#3A3A3A;
+    --charcoal-soft:#6b6b6b;
+    --burgundy:#7f1621;
+    --burgundy-dark:#5c0f18;
+    --gold:#c0944a;
+    --line: rgba(58,58,58,0.15);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--charcoal);
+    font-family:'Tajawal','Jost',sans-serif;
+    overflow-x:hidden;
+  }
+  html[dir="ltr"] body{ font-family:'Jost','Tajawal',sans-serif; }
+
+  h1,h2,h3, .brand{
+    font-family:'Aref Ruqaa','Cormorant Garamond', serif;
+    font-weight:700;
+    letter-spacing:0.5px;
+  }
+  html[dir="ltr"] h1, html[dir="ltr"] h2, html[dir="ltr"] h3, html[dir="ltr"] .brand{
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; }
+  img{ display:block; width:100%; height:100%; object-fit:cover; }
+  section{ padding:120px 8vw; position:relative; }
+  @media (max-width:768px){ section{ padding:80px 6vw; } }
+
+  .eyebrow{
+    color:var(--burgundy);
+    font-family:'Jost','Tajawal',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:0.78rem;
+    font-weight:500;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    display:inline-block;
+    width:28px; height:1px;
+    background:var(--gold);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 8vw;
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
+    background:rgba(247,242,234,0.92);
+    backdrop-filter:blur(8px);
+    padding:14px 8vw;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .brand{ font-size:1.5rem; color:var(--burgundy); }
+  .brand span{ color:var(--gold); }
+  nav ul{ display:flex; gap:38px; font-size:0.95rem; }
+  nav a{ position:relative; padding-bottom:4px; }
+  nav a::after{
+    content:""; position:absolute; bottom:0; right:0; left:0; height:1px;
+    background:var(--gold); transform:scaleX(0); transform-origin:center;
+    transition:transform .3s ease;
+  }
+  nav a:hover::after{ transform:scaleX(1); }
+
+  .nav-right{ display:flex; align-items:center; gap:24px; }
+  #langToggle{
+    border:1px solid var(--charcoal);
+    background:none; cursor:pointer;
+    padding:7px 16px; font-size:0.8rem; letter-spacing:1px;
+    color:var(--charcoal); border-radius:2px;
+    font-family:'Jost',sans-serif;
+    transition:all .3s ease;
+  }
+  #langToggle:hover{ background:var(--charcoal); color:var(--ivory); }
+
+  .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; }
+  .burger span{ width:24px; height:1.5px; background:var(--charcoal); }
+
+  @media (max-width:860px){
+    nav{ display:none; }
+    .burger{ display:flex; }
+  }
+
+  /* ---------- MOBILE MENU OVERLAY ---------- */
+  .mobile-menu{
+    position:fixed; inset:0; z-index:200;
+    background:var(--burgundy);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:60px;
+    transform:translateY(-100%); opacity:0;
+    transition:transform .5s ease, opacity .4s ease;
+    pointer-events:none;
+  }
+  .mobile-menu.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+  .mm-close{
+    position:absolute; top:24px; inset-inline-end:24px;
+    background:none; border:none; color:var(--ivory); font-size:1.6rem; cursor:pointer;
+  }
+  .mm-links{ display:flex; flex-direction:column; align-items:center; gap:34px; }
+  .mm-links a{
+    color:var(--ivory); font-size:1.5rem; letter-spacing:2px;
+    font-family:'Aref Ruqaa','Cormorant Garamond',serif;
+  }
+  html[dir="ltr"] .mm-links a{ font-family:'Cormorant Garamond',serif; }
+  .mm-links a:hover{ color:var(--gold); }
+  .mm-social{ display:flex; gap:20px; }
+  .mm-social a{
+    color:var(--ivory); border:1px solid rgba(247,242,234,0.3);
+    width:46px; height:46px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+    transition:all .3s ease;
+  }
+  .mm-social a:hover{ border-color:var(--gold); color:var(--gold); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; position:relative;
+    padding:0 6vw;
+    background:
+      radial-gradient(ellipse at 50% 15%, rgba(192,148,74,0.14), transparent 60%),
+      var(--ivory);
+  }
+  .arch-outline{
+    position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+    width:min(70vw,720px); height:62vh;
+    border:1.5px solid rgba(127,22,33,0.18);
+    border-bottom:none;
+    border-radius:50% 50% 0 0 / 30% 30% 0 0;
+    pointer-events:none;
+  }
+  .arch-outline::before{
+    content:"";
+    position:absolute; inset:14px;
+    border:1px solid rgba(192,148,74,0.35);
+    border-bottom:none;
+    border-radius:50% 50% 0 0 / 30% 30% 0 0;
+  }
+  .hero-tag{ font-size:0.85rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:22px; font-family:'Jost',sans-serif;}
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 5.2rem);
+    color:var(--burgundy);
+    line-height:1.15;
+    max-width:16ch;
+  }
+  .hero p{
+    margin-top:26px; max-width:46ch; color:var(--charcoal-soft);
+    font-size:1.08rem; line-height:1.9;
+  }
+  .hero-cta{ margin-top:44px; display:flex; gap:20px; z-index:2; flex-wrap:wrap; justify-content:center; }
+
+  .btn{
+    display:inline-block; padding:14px 34px; font-size:0.9rem; letter-spacing:1px;
+    border-radius:2px; transition:all .35s ease; font-family:'Jost',sans-serif;
+  }
+  .btn-solid{ background:var(--burgundy); color:var(--ivory); }
+  .btn-solid:hover{ background:var(--burgundy-dark); transform:translateY(-2px); }
+  .btn-outline{ border:1px solid var(--charcoal); color:var(--charcoal); }
+  .btn-outline:hover{ border-color:var(--gold); color:var(--gold); }
+
+  .scroll-cue{
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+    font-size:0.72rem; letter-spacing:2px; color:var(--charcoal-soft);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .scroll-cue::after{
+    content:""; width:1px; height:38px; background:var(--charcoal-soft);
+    animation:scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine{ 0%,100%{opacity:.2;} 50%{opacity:1;} }
+
+  /* ---------- SERVICES / CHIPS ---------- */
+  .chips{ display:flex; flex-wrap:wrap; gap:14px; margin-top:34px; }
+  .chip{
+    border:1px solid var(--line); padding:10px 22px; border-radius:30px;
+    font-size:0.88rem; color:var(--charcoal-soft);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:center; background:var(--ivory-alt); }
+  @media (max-width:900px){ .about{ grid-template-columns:1fr; } }
+  .about-media{ position:relative; aspect-ratio:4/5; }
+  .about-media img{
+    border-radius:50% 50% 0 0 / 26% 26% 0 0;
+    filter:sepia(12%) saturate(85%);
+  }
+  .about-media .frame{
+    position:absolute; inset:-16px; border:1px solid var(--gold);
+    border-radius:50% 50% 0 0 / 26% 26% 0 0; z-index:-1;
+  }
+  .about-text h2{ font-size:clamp(1.9rem,3.4vw,2.8rem); color:var(--burgundy); margin-bottom:24px; }
+  .about-text p{ color:var(--charcoal-soft); line-height:2; font-size:1.02rem; margin-bottom:16px; }
+
+  /* ---------- WORKS / PORTFOLIO ---------- */
+  .works-head{ text-align:center; margin-bottom:70px; }
+  .works-head h2{ font-size:clamp(2rem,4vw,3rem); color:var(--burgundy); }
+  .works-head p{ color:var(--charcoal-soft); max-width:50ch; margin:16px auto 0; }
+
+  .filters{ display:flex; justify-content:center; gap:14px; margin-bottom:50px; flex-wrap:wrap; }
+  .filter-btn{
+    background:none; border:none; font-family:'Jost',sans-serif; font-size:0.85rem;
+    letter-spacing:1px; color:var(--charcoal-soft); cursor:pointer; padding:8px 18px;
+    border-bottom:1px solid transparent; transition:all .3s ease;
+  }
+  .filter-btn.active, .filter-btn:hover{ color:var(--burgundy); border-color:var(--gold); }
+
+  .work-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:36px 30px;
+  }
+  @media (max-width:900px){ .work-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .work-grid{ grid-template-columns:1fr; } }
+
+  .work-card{ cursor:default; }
+  .work-frame{
+    position:relative; aspect-ratio:3/4; overflow:hidden;
+    border-radius:50% 50% 0 0 / 22% 22% 0 0;
+    border:1px solid var(--line);
+  }
+  .work-frame img{
+    transition:transform .8s cubic-bezier(.2,.7,.2,1), filter .6s ease;
+    filter:grayscale(45%) sepia(8%);
+  }
+  .work-card:hover .work-frame img{ transform:scale(1.08); filter:grayscale(0%) sepia(4%); }
+  .work-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(58,58,58,0.75), transparent 55%);
+    display:flex; align-items:flex-end; padding:26px 22px;
+    opacity:0; transition:opacity .4s ease;
+  }
+  .work-card:hover .work-overlay{ opacity:1; }
+  .work-overlay div p{ color:var(--ivory); font-size:0.8rem; letter-spacing:1px; opacity:.85; }
+  .work-overlay div h3{ color:var(--ivory); font-size:1.25rem; font-family:'Cormorant Garamond',serif; }
+  .work-meta{ margin-top:14px; text-align:center; }
+  .work-meta h3{ font-size:1.15rem; color:var(--charcoal); }
+  .work-meta p{ font-size:0.82rem; color:var(--gold); letter-spacing:1px; margin-top:4px; }
+
+  /* ---------- PROCESS STRIP ---------- */
+  .process{ background:var(--burgundy); color:var(--ivory); text-align:center; }
+  .process h2{ color:var(--ivory); font-size:clamp(1.8rem,3.4vw,2.6rem); margin-bottom:60px; }
+  .process-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:40px; }
+  @media (max-width:900px){ .process-grid{ grid-template-columns:repeat(2,1fr); } }
+  .process-item .mark{ font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:var(--gold); margin-bottom:14px; }
+  .process-item h3{ color:var(--ivory); font-size:1.1rem; margin-bottom:10px; font-family:'Jost',sans-serif; font-weight:500;}
+  .process-item p{ color:rgba(247,242,234,0.75); font-size:0.92rem; line-height:1.8; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ display:grid; grid-template-columns:1fr 1fr; gap:70px; }
+  @media (max-width:900px){ .contact{ grid-template-columns:1fr; } }
+  .contact-info h2{ font-size:clamp(1.9rem,3.4vw,2.8rem); color:var(--burgundy); margin-bottom:24px; }
+  .contact-info p{ color:var(--charcoal-soft); line-height:1.9; margin-bottom:34px; max-width:44ch; }
+  .info-row{ display:flex; gap:16px; margin-bottom:22px; align-items:flex-start; }
+  .info-row .lbl{ font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); min-width:90px; }
+  .info-row .val{ font-size:1rem; }
+  .social-row{ display:flex; gap:16px; margin-top:30px; flex-wrap:wrap; }
+  .social-row a{ border:1px solid var(--line); width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:all .3s ease; font-size:1.05rem; color:var(--charcoal);}
+  .social-row a:hover{ border-color:var(--gold); color:var(--gold); }
+
+  form{ display:flex; flex-direction:column; gap:22px; }
+  .field{ position:relative; }
+  .field label{ display:block; font-size:0.78rem; letter-spacing:2px; text-transform:uppercase; color:var(--charcoal-soft); margin-bottom:8px; }
+  .field input, .field textarea{
+    width:100%; background:none; border:none; border-bottom:1px solid var(--line);
+    padding:10px 2px; font-size:1rem; font-family:inherit; color:var(--charcoal);
+    outline:none; transition:border-color .3s ease;
+  }
+  .field input:focus, .field textarea:focus{ border-color:var(--burgundy); }
+  .field textarea{ resize:vertical; min-height:90px; }
+  form .btn{ align-self:flex-start; border:none; cursor:pointer; margin-top:10px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:50px 8vw; display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid var(--line); font-size:0.85rem; color:var(--charcoal-soft); flex-wrap:wrap; gap:16px;
+  }
+  footer .brand{ font-size:1.1rem; }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <a href="#home" class="brand">Comendite<span>.</span></a>
+  <nav>
+    <ul>
+      <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+      <li><a href="#about" data-ar="من نحن" data-en="About">من نحن</a></li>
+      <li><a href="#works" data-ar="أعمالنا" data-en="Works">أعمالنا</a></li>
+      <li><a href="#process" data-ar="آلية العمل" data-en="Process">آلية العمل</a></li>
+      <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+    </ul>
+  </nav>
+  <div class="nav-right">
+    <button id="langToggle">EN</button>
+    <button class="burger" id="burgerBtn" aria-label="menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mm-close" id="mmClose" aria-label="close"><i class="fa-solid fa-xmark"></i></button>
+  <nav class="mm-links">
+    <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+    <a href="#about" data-ar="من نحن" data-en="About">من نحن</a>
+    <a href="#works" data-ar="أعمالنا" data-en="Works">أعمالنا</a>
+    <a href="#process" data-ar="آلية العمل" data-en="Process">آلية العمل</a>
+    <a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+  </nav>
+  <div class="mm-social">
+    <a href="https://instagram.com/comendite" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://x.com/comendite" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="https://tiktok.com/@comendite" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    <a href="https://wa.me/9665XXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="mailto:hello@comendite.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+</div>
+
+<section class="hero" id="home">
+  <div class="arch-outline"></div>
+  <p class="hero-tag" id="heroTag" data-ar="استوديو تصميم داخلي ومعماري" data-en="Interior &amp; Architectural Design Studio">استوديو تصميم داخلي ومعماري</p>
+  <h1 id="heroTitle" data-ar="نُشكّل المساحات لتُشبه أصحابها" data-en="We shape spaces to reflect their people">نُشكّل المساحات لتُشبه أصحابها</h1>
+  <p id="heroDesc" data-ar="Comendite استوديو متخصص في التصميم الداخلي وتصميم المساحات التجارية، من الفكرة الأولى إلى التسليم النهائي، بخبرة تجمع بين الدقة الهندسية والحس الجمالي." data-en="Comendite is a studio specialized in interior and commercial space design — from the first concept to final handover, blending engineering precision with an eye for aesthetics.">Comendite استوديو متخصص في التصميم الداخلي وتصميم المساحات التجارية، من الفكرة الأولى إلى التسليم النهائي، بخبرة تجمع بين الدقة الهندسية والحس الجمالي.</p>
+  <div class="hero-cta">
+    <a href="#works" class="btn btn-solid" data-ar="استعرض أعمالنا" data-en="View Our Works">استعرض أعمالنا</a>
+    <a href="#contact" class="btn btn-outline" data-ar="ابدأ مشروعك" data-en="Start a Project">ابدأ مشروعك</a>
+  </div>
+  <div class="scroll-cue" data-ar="مرر للأسفل" data-en="SCROLL">مرر للأسفل</div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-media reveal">
+    <div class="frame"></div>
+    <img id="aboutImg" src="https://picsum.photos/id/1080/700/875" alt="Comendite interior design studio - placeholder image, replace with real project photo">
+  </div>
+  <div class="about-text reveal">
+    <p class="eyebrow" data-ar="من نحن" data-en="About Us">من نحن</p>
+    <h2 id="aboutTitle" data-ar="فريق شغوف بتفاصيل المكان" data-en="A team obsessed with the details of place">فريق شغوف بتفاصيل المكان</h2>
+    <p id="aboutText" data-ar="تأسس Comendite على فكرة بسيطة: كل مساحة تحكي قصة، ومهمتنا أن نرويها بأسلوب يليق بأصحابها. نعمل مع العملاء خطوة بخطوة، من التصور الأول وحتى تسليم المشروع، لنضمن أن كل تفصيلة تعكس هوية المكان وشخصية من يشغله." data-en="Comendite was founded on a simple idea: every space tells a story, and our job is to tell it well. We work with clients step by step, from the first concept through final delivery, making sure every detail reflects the identity of the place and the people in it.">تأسس Comendite على فكرة بسيطة: كل مساحة تحكي قصة، ومهمتنا أن نرويها بأسلوب يليق بأصحابها. نعمل مع العملاء خطوة بخطوة، من التصور الأول وحتى تسليم المشروع، لنضمن أن كل تفصيلة تعكس هوية المكان وشخصية من يشغله.</p>
+    <p data-ar="نغطي التصميم الداخلي، تصميم المحلات والمقاهي والمكاتب، وإشراف التنفيذ الكامل حتى التسليم." data-en="We cover interior design, commercial spaces such as cafés, retail and offices, and full execution supervision through to handover.">نغطي التصميم الداخلي، تصميم المحلات والمقاهي والمكاتب، وإشراف التنفيذ الكامل حتى التسليم.</p>
+    <div class="chips">
+      <span class="chip" data-ar="تصميم داخلي" data-en="Interior Design">تصميم داخلي</span>
+      <span class="chip" data-ar="مساحات تجارية" data-en="Commercial Spaces">مساحات تجارية</span>
+      <span class="chip" data-ar="إشراف تنفيذ" data-en="Execution Supervision">إشراف تنفيذ</span>
+      <span class="chip" data-ar="هوية بصرية للمكان" data-en="Spatial Branding">هوية بصرية للمكان</span>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="works-head reveal">
+    <p class="eyebrow" style="justify-content:center;" data-ar="أعمالنا" data-en="Selected Works">أعمالنا</p>
+    <h2 data-ar="مشاريع نفتخر بتوقيعها" data-en="Projects we're proud to sign">مشاريع نفتخر بتوقيعها</h2>
+    <p data-ar="نماذج مبدئية من أعمالنا — استبدل هذه الصور بصور مشاريعك الفعلية." data-en="Placeholder samples of our work — replace these images with your real project photos.">نماذج مبدئية من أعمالنا — استبدل هذه الصور بصور مشاريعك الفعلية.</p>
+  </div>
+
+  <div class="work-grid" id="workGrid">
+    <!-- تُملأ المشاريع تلقائيًا من content.json -->
+  </div>
+</section>
+
+<section class="process" id="process">
+  <h2 class="reveal" data-ar="آلية عملنا" data-en="How we work">آلية عملنا</h2>
+  <div class="process-grid">
+    <div class="process-item reveal">
+      <div class="mark">01</div>
+      <h3 data-ar="الاستشارة" data-en="Consultation">الاستشارة</h3>
+      <p data-ar="نستمع لاحتياجاتك ونزور الموقع لفهم المساحة وإمكاناتها." data-en="We listen to your needs and visit the site to understand the space and its potential.">نستمع لاحتياجاتك ونزور الموقع لفهم المساحة وإمكاناتها.</p>
+    </div>
+    <div class="process-item reveal">
+      <div class="mark">02</div>
+      <h3 data-ar="التصميم" data-en="Design">التصميم</h3>
+      <p data-ar="نطوّر المفهوم البصري والمخططات الفنية بالتفصيل." data-en="We develop the visual concept and detailed technical drawings.">نطوّر المفهوم البصري والمخططات الفنية بالتفصيل.</p>
+    </div>
+    <div class="process-item reveal">
+      <div class="mark">03</div>
+      <h3 data-ar="التنفيذ" data-en="Execution">التنفيذ</h3>
+      <p data-ar="نشرف على التنفيذ ميدانياً لضمان مطابقة كل تفصيلة للتصميم." data-en="We supervise execution on site to ensure every detail matches the design.">نشرف على التنفيذ ميدانياً لضمان مطابقة كل تفصيلة للتصميم.</p>
+    </div>
+    <div class="process-item reveal">
+      <div class="mark">04</div>
+      <h3 data-ar="التسليم" data-en="Handover">التسليم</h3>
+      <p data-ar="نسلّمك مساحة جاهزة تعكس هويتك بأعلى معايير الجودة." data-en="We hand over a ready space that reflects your identity to the highest quality standards.">نسلّمك مساحة جاهزة تعكس هويتك بأعلى معايير الجودة.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-info reveal">
+    <p class="eyebrow" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</p>
+    <h2 data-ar="لنبدأ مشروعك القادم" data-en="Let's start your next project">لنبدأ مشروعك القادم</h2>
+    <p data-ar="أخبرنا عن مساحتك وفكرتك، وسيتواصل معك فريقنا خلال يومي عمل." data-en="Tell us about your space and idea, and our team will reach out within two business days.">أخبرنا عن مساحتك وفكرتك، وسيتواصل معك فريقنا خلال يومي عمل.</p>
+
+    <div class="info-row">
+      <span class="lbl" data-ar="البريد" data-en="Email">البريد</span>
+      <span class="val" id="contactEmail">hello@comendite.com</span>
+    </div>
+    <div class="info-row">
+      <span class="lbl" data-ar="الجوال" data-en="Phone">الجوال</span>
+      <span class="val" id="contactPhone" style="direction:ltr; display:inline-block;">+966 5X XXX XXXX</span>
+    </div>
+    <div class="info-row">
+      <span class="lbl" data-ar="الموقع" data-en="Location">الموقع</span>
+      <span class="val" id="contactLocation" data-ar="الطائف، المملكة العربية السعودية" data-en="Taif, Saudi Arabia">الطائف، المملكة العربية السعودية</span>
+    </div>
+
+    <div class="social-row">
+      <a href="https://instagram.com/comendite" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://x.com/comendite" target="_blank" rel="noopener" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://tiktok.com/@comendite" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://wa.me/9665XXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="mailto:hello@comendite.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <form class="reveal" id="contactForm">
+    <div class="field">
+      <label data-ar="الاسم" data-en="Name">الاسم</label>
+      <input type="text" required>
+    </div>
+    <div class="field">
+      <label data-ar="رقم الجوال" data-en="Phone Number">رقم الجوال</label>
+      <input type="tel" required style="direction:ltr; text-align:right;" data-ar-ph="05XXXXXXXX" data-en-ph="05XXXXXXXX">
+    </div>
+    <div class="field">
+      <label data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+      <input type="email" required>
+    </div>
+    <div class="field">
+      <label data-ar="نوع المشروع" data-en="Project Type">نوع المشروع</label>
+      <input type="text" data-ar-ph="مقهى، مكتب، منزل..." data-en-ph="Café, office, home...">
+    </div>
+    <div class="field">
+      <label data-ar="تفاصيل المشروع" data-en="Project Details">تفاصيل المشروع</label>
+      <textarea required></textarea>
+    </div>
+    <button type="submit" class="btn btn-solid" data-ar="إرسال الطلب" data-en="Send Request">إرسال الطلب</button>
+  </form>
+</section>
+
+<footer>
+  <a href="#home" class="brand">Comendite<span>.</span></a>
+  <p data-ar="© 2026 Comendite. جميع الحقوق محفوظة." data-en="© 2026 Comendite. All rights reserved.">© 2026 Comendite. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script>
+async function initSite(){
+  // ---------- Load editable content from content.json (edited via /admin) ----------
+  function setBilingual(id, ar, en){
+    const el = document.getElementById(id);
+    if(!el || ar == null) return;
+    el.setAttribute('data-ar', ar);
+    el.setAttribute('data-en', en);
+  }
+
+  try{
+    const res = await fetch('content.json', {cache:'no-store'});
+    if(res.ok){
+      const data = await res.json();
+
+      setBilingual('heroTag', data.hero?.tagAr, data.hero?.tagEn);
+      setBilingual('heroTitle', data.hero?.titleAr, data.hero?.titleEn);
+      setBilingual('heroDesc', data.hero?.descAr, data.hero?.descEn);
+
+      if(data.about?.imgUrl) document.getElementById('aboutImg').src = data.about.imgUrl;
+      setBilingual('aboutTitle', data.about?.titleAr, data.about?.titleEn);
+      setBilingual('aboutText', data.about?.textAr, data.about?.textEn);
+
+      if(data.contact?.email) document.getElementById('contactEmail').textContent = data.contact.email;
+      if(data.contact?.phone) document.getElementById('contactPhone').textContent = data.contact.phone;
+      setBilingual('contactLocation', data.contact?.locationAr, data.contact?.locationEn);
+
+      if(Array.isArray(data.projects)){
+        const grid = document.getElementById('workGrid');
+        grid.innerHTML = data.projects.map(p => `
+          <div class="work-card reveal in">
+            <div class="work-frame">
+              <img src="${p.img}" alt="${p.titleEn || ''}">
+              <div class="work-overlay"><div>
+                <p data-ar="${p.locAr||''}" data-en="${p.locEn||''}">${p.locAr||''}</p>
+                <h3 data-ar="${p.titleAr||''}" data-en="${p.titleEn||''}">${p.titleAr||''}</h3>
+              </div></div>
+            </div>
+            <div class="work-meta">
+              <h3 data-ar="${p.titleAr||''}" data-en="${p.titleEn||''}">${p.titleAr||''}</h3>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+  } catch(e){
+    console.warn('content.json not found yet — showing default placeholder content.', e);
+  }
+
+  // ---------- Language toggle ----------
+  const toggleBtn = document.getElementById('langToggle');
+  const translatable = document.querySelectorAll('[data-ar]');
+  let currentLang = 'ar';
+
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    translatable.forEach(el=>{
+      const txt = el.getAttribute('data-'+lang);
+      if(txt !== null) el.textContent = txt;
+    });
+    document.querySelectorAll('[data-ar-ph]').forEach(el=>{
+      el.placeholder = el.getAttribute('data-'+lang+'-ph') || '';
+    });
+    toggleBtn.textContent = lang === 'ar' ? 'EN' : 'AR';
+    currentLang = lang;
+  }
+  toggleBtn.addEventListener('click', ()=> applyLang(currentLang === 'ar' ? 'en' : 'ar'));
+  applyLang('ar');
+
+  // ---------- Header scroll state ----------
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', ()=>{
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ---------- Mobile menu ----------
+  const mobileMenu = document.getElementById('mobileMenu');
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mmClose = document.getElementById('mmClose');
+  burgerBtn.addEventListener('click', ()=> mobileMenu.classList.add('open'));
+  mmClose.addEventListener('click', ()=> mobileMenu.classList.remove('open'));
+  document.querySelectorAll('.mm-links a').forEach(a=>{
+    a.addEventListener('click', ()=> mobileMenu.classList.remove('open'));
+  });
+
+  // ---------- Reveal on scroll ----------
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+  // ---------- Contact form (placeholder submit -> mailto) ----------
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const inputs = this.querySelectorAll('input, textarea');
+    const [name, phone, email, type, details] = inputs;
+    const subject = encodeURIComponent('طلب مشروع جديد - Comendite');
+    const body = encodeURIComponent(
+      `الاسم: ${name.value}\nالجوال: ${phone.value}\nالبريد: ${email.value}\nنوع المشروع: ${type.value}\n\n${details.value}`
+    );
+    window.location.href = `mailto:hello@comendite.com?subject=${subject}&body=${body}`;
+  });
+}
+
+initSite();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "tagAr": "استوديو تصميم داخلي ومعماري",
+    "tagEn": "Interior & Architectural Design Studio",
+    "titleAr": "نُشكّل المساحات لتُشبه أصحابها",
+    "titleEn": "We shape spaces to reflect their people",
+    "descAr": "Comendite استوديو متخصص في التصميم الداخلي وتصميم المساحات التجارية، من الفكرة الأولى إلى التسليم النهائي، بخبرة تجمع بين الدقة الهندسية والحس الجمالي.",
+    "descEn": "Comendite is a studio specialized in interior and commercial space design — from the first concept to final handover, blending engineering precision with an eye for aesthetics."
+  },
+  "about": {
+    "imgUrl": "https://picsum.photos/id/1080/700/875",
+    "titleAr": "فريق شغوف بتفاصيل المكان",
+    "titleEn": "A team obsessed with the details of place",
+    "textAr": "تأسس Comendite على فكرة بسيطة: كل مساحة تحكي قصة، ومهمتنا أن نرويها بأسلوب يليق بأصحابها. نعمل مع العملاء خطوة بخطوة، من التصور الأول وحتى تسليم المشروع، لنضمن أن كل تفصيلة تعكس هوية المكان وشخصية من يشغله.",
+    "textEn": "Comendite was founded on a simple idea: every space tells a story, and our job is to tell it well. We work with clients step by step, from the first concept through final delivery, making sure every detail reflects the identity of the place and the people in it."
+  },
+  "contact": {
+    "email": "hello@comendite.com",
+    "phone": "+966 5X XXX XXXX",
+    "locationAr": "الطائف، المملكة العربية السعودية",
+    "locationEn": "Taif, Saudi Arabia"
+  },
+  "projects": [
+    { "titleAr": "مقهى النخيل", "titleEn": "Al Nakheel Café", "locAr": "الطائف", "locEn": "Taif", "img": "https://picsum.photos/id/225/600/800" },
+    { "titleAr": "بوتيك أثيل", "titleEn": "Atheel Boutique", "locAr": "مكة المكرمة", "locEn": "Makkah", "img": "https://picsum.photos/id/28/600/800" },
+    { "titleAr": "مكتب إنسول", "titleEn": "Insoul Office", "locAr": "جدة", "locEn": "Jeddah", "img": "https://picsum.photos/id/60/600/800" },
+    { "titleAr": "كافيه تُرَاث", "titleEn": "Turath Café", "locAr": "الرياض", "locEn": "Riyadh", "img": "https://picsum.photos/id/292/600/800" },
+    { "titleAr": "صالون مرايا", "titleEn": "Maraya Salon", "locAr": "الدمام", "locEn": "Dammam", "img": "https://picsum.photos/id/106/600/800" },
+    { "titleAr": "مقر أُفق", "titleEn": "Ufoq HQ", "locAr": "الطائف", "locEn": "Taif", "img": "https://picsum.photos/id/180/600/800" }
+  ]
+}

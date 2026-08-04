@@ -1,0 +1,57 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+locale: "ar"
+
+collections:
+  - name: "content"
+    label: "محتوى الموقع"
+    files:
+      - name: "site"
+        label: "الموقع الرئيسي"
+        file: "content.json"
+        fields:
+          - label: "الرئيسية (Hero)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "الشعار (عربي)", name: "tagAr", widget: "string" }
+              - { label: "الشعار (English)", name: "tagEn", widget: "string" }
+              - { label: "العنوان (عربي)", name: "titleAr", widget: "string" }
+              - { label: "العنوان (English)", name: "titleEn", widget: "string" }
+              - { label: "الوصف (عربي)", name: "descAr", widget: "text" }
+              - { label: "الوصف (English)", name: "descEn", widget: "text" }
+
+          - label: "من نحن (About)"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "صورة القسم", name: "imgUrl", widget: "image" }
+              - { label: "العنوان (عربي)", name: "titleAr", widget: "string" }
+              - { label: "العنوان (English)", name: "titleEn", widget: "string" }
+              - { label: "النص (عربي)", name: "textAr", widget: "text" }
+              - { label: "النص (English)", name: "textEn", widget: "text" }
+
+          - label: "التواصل (Contact)"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "البريد الإلكتروني", name: "email", widget: "string" }
+              - { label: "رقم الجوال", name: "phone", widget: "string" }
+              - { label: "الموقع (عربي)", name: "locationAr", widget: "string" }
+              - { label: "الموقع (English)", name: "locationEn", widget: "string" }
+
+          - label: "المشاريع (Projects)"
+            name: "projects"
+            widget: "list"
+            summary: "{{titleAr}} — {{locAr}}"
+            fields:
+              - { label: "اسم المشروع (عربي)", name: "titleAr", widget: "string" }
+              - { label: "اسم المشروع (English)", name: "titleEn", widget: "string" }
+              - { label: "الموقع (عربي)", name: "locAr", widget: "string" }
+              - { label: "الموقع (English)", name: "locEn", widget: "string" }
+              - { label: "صورة المشروع", name: "img", widget: "image" }
